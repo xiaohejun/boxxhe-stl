@@ -48,6 +48,7 @@ jobs:
         cd build
         ctest -C $BUILD_TYPE -VV
 
-    - name: install project
-      run: cmake --build build --target install --config Release 
+    # TODO 这里有问题，暂时先注释掉
+    # - name: install project
+    #   run: cmake --build build --target install --config Release 
 

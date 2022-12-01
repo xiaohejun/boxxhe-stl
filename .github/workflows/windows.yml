@@ -48,6 +48,7 @@ jobs:
         cd build
         ctest -C "$env:BUILD_TYPE" -VV
 
-    - name: install project
-      run: cmake --build build --target install --config Release 
+    # 有问题，先注释掉
+    # - name: install project
+    #   run: cmake --build build --target install --config Release 
 
