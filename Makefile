@@ -26,19 +26,26 @@ export PRINT_HELP_PYSCRIPT
 
 BROWSER := python3 -c "$$BROWSER_PYSCRIPT"
 INSTALL_LOCATION := ~/.local
+PROJECT_NAME := boxxhe-stl
 
 help:
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 test: ## run tests quickly with ctest
 	rm -rf build/
-	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -Dboxxhe-stl_ENABLE_UNIT_TESTING=1 -DCMAKE_BUILD_TYPE="Release"
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -D$(PROJECT_NAME)_ENABLE_UNIT_TESTING=1 -DCMAKE_BUILD_TYPE="Release"
 	cmake --build build --config Release
+	cd build/ && ctest -C Release -VV
+
+asan_with_test: ## run tests with asan
+	rm -rf build/
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -D$(PROJECT_NAME)_ENABLE_UNIT_TESTING=1 -DCMAKE_BUILD_TYPE="Debug" -D$(PROJECT_NAME)_ENABLE_ASAN=ON
+	cmake --build build --config Debug
 	cd build/ && ctest -C Release -VV
 
 coverage: ## check code coverage quickly GCC
 	rm -rf build/
-	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -Dmodern-cpp-template_ENABLE_CODE_COVERAGE=1
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -D$(PROJECT_NAME)_ENABLE_CODE_COVERAGE=1
 	cmake --build build --config Release
 	cd build/ && ctest -C Release -VV
 	cd .. && (bash -c "find . -type f -name '*.gcno' -exec gcov -pb {} +" || true)
@@ -46,7 +53,7 @@ coverage: ## check code coverage quickly GCC
 docs: ## generate Doxygen HTML documentation, including API docs
 	rm -rf docs/
 	rm -rf build/
-	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -Dboxxhe-stl_ENABLE_DOXYGEN=1
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -D$(PROJECT_NAME)_ENABLE_DOXYGEN=1
 	cmake --build build --config Release
 	cmake --build build --target doxygen-docs
 	$(BROWSER) docs/html/index.html
