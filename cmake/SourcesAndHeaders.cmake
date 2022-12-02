@@ -3,6 +3,7 @@
 # )
 file(GLOB_RECURSE sources src/*.cpp)
 
+# 添加main.cpp的话当前有问题，覆盖率没法出来
 set(exe_sources
 		src/main.cpp
 		${sources}

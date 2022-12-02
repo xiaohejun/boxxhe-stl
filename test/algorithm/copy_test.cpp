@@ -10,6 +10,6 @@ TEST(copy_test, copy_arrary)
     int b[10];
     copy(a, a + 5, b);
     for (size_t i = 0; i < 5; ++i) {
-        EXPECT_EQ(b[i], i);
+        EXPECT_EQ(b[i], i + 1);
     }
 }
