@@ -5,6 +5,9 @@
 
 BEGIN_NAMESPACE_BOXXHE
 
+
+
+
 template<typename Iterator, typename T>
 Iterator find(Iterator first, Iterator last, const T& value)
 {
@@ -14,6 +17,23 @@ Iterator find(Iterator first, Iterator last, const T& value)
 
     return first;
 }
+
+template<typename InputIterator, typename OuputIterator>
+OuputIterator copy(InputIterator first, InputIterator last, OuputIterator result)
+{
+    for (; first != last; ++first, ++result) {
+        *result = *first;
+    }
+
+    return result;
+}
+
+
+
+
+
+
+
 
 
 END_NAMESPACE_BOXXHE
