@@ -58,6 +58,21 @@ ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last)
     return last;
 }
 
+template<typename BidirectionalIterator, class OuputIterator>
+OuputIterator reverse_copy(BidirectionalIterator first,
+                           BidirectionalIterator last,
+                           OuputIterator result)
+{
+    while (first != last) {
+        --last;
+        *result = *last;
+        ++result;
+    }
+
+    return result;
+}
+
+
 
 
 
