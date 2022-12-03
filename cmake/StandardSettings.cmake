@@ -88,6 +88,7 @@ if(CCACHE_FOUND)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
 endif()
 
+# TODO 当前memory leak 可能没法工作
 option(${PROJECT_NAME}_ENABLE_ASAN "Enable Address Sanitize to detect memory error." OFF)
 if(${PROJECT_NAME}_ENABLE_ASAN)
   add_compile_options(-fsanitize=address)
