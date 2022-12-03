@@ -8,8 +8,8 @@ BEGIN_NAMESPACE_BOXXHE
 
 
 
-template<typename Iterator, typename T>
-Iterator find(Iterator first, Iterator last, const T& value)
+template<typename InputIterator, typename T>
+InputIterator find(InputIterator first, InputIterator last, const T& value)
 {
     while (first != last && *first != value) {
         ++first;
@@ -29,7 +29,15 @@ OuputIterator copy(InputIterator first, InputIterator last, OuputIterator result
 }
 
 
-
+template<typename ForwardIterator, typename T>
+void replace(ForwardIterator first, ForwardIterator last, const T& old_value, const T& new_value)
+{
+    for (; first != last; ++first) {
+        if (*first == old_value) {
+            *first = new_value;
+        }
+    }
+}
 
 
 
