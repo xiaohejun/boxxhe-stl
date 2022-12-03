@@ -9,6 +9,22 @@ BEGIN_NAMESPACE_BOXXHE
 
 
 
+template<typename T>
+struct iterator_traits {
+    typedef T value_type;
+};
+
+template<typename T>
+struct iterator_traits<T*> {
+    typedef T value_type;
+};
+
+template<typename T>
+struct iterator_traits<const T*> {
+    typedef T value_type;
+};
+
+
 template<class T>
 class ostream_iterator {
 private:

@@ -2,6 +2,7 @@
 #define ALGORITHM_H_
 
 #include "config.h"
+#include "iterator.h"
 
 BEGIN_NAMESPACE_BOXXHE
 
@@ -73,8 +74,17 @@ OuputIterator reverse_copy(BidirectionalIterator first,
 }
 
 
+template<typename InputIterator>
+typename iterator_traits<InputIterator>::value_type
+sum_nonempty(InputIterator first, InputIterator last)
+{
+    typename iterator_traits<InputIterator>::value_type result = *first++;
+    for (; first != last; ++first) {
+        result += *first;
+    }
 
-
+    return result;
+}
 
 
 END_NAMESPACE_BOXXHE
