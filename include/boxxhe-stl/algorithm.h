@@ -40,6 +40,24 @@ void replace(ForwardIterator first, ForwardIterator last, const T& old_value, co
 }
 
 
+template<typename ForwardIterator>
+ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last)
+{
+    if (first == last) { // 空区间
+        return last;
+    }
+
+    ForwardIterator next = first;
+    while (++next != last) {
+        if (*first == *next) {
+            return first;
+        }
+        first = next;
+    }
+
+    return last;
+}
+
 
 
 

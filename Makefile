@@ -41,7 +41,7 @@ asan_with_test: ## run tests with asan
 	rm -rf build/
 	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$(INSTALL_LOCATION) -D$(PROJECT_NAME)_ENABLE_UNIT_TESTING=1 -DCMAKE_BUILD_TYPE="Debug" -D$(PROJECT_NAME)_ENABLE_ASAN=ON
 	cmake --build build --config Debug
-	cd build/ && ctest -C Release -VV
+	cd build/ && ctest -C Debug -VV
 
 coverage: ## check code coverage quickly GCC
 	rm -rf build/
