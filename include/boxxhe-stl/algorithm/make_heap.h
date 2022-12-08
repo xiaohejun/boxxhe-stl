@@ -30,6 +30,14 @@ void _make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare c
     }
 }
 
+/*!
+ * @brief 在范围[frist, last)构造堆
+ * @tparam compare 比较函数对象的类型
+ * @tparam randomaccessiterator 随机访问迭代器
+ * @param first 制作堆的来源的左闭区间
+ * @param last 制作堆的来源的右开区间
+ * @param comp 比较函数对象, 传入less的时候是大顶堆，传入greater的时候是小顶堆
+ */
 template<class RandomAccessIterator, class Compare>
 inline
 void
@@ -38,13 +46,19 @@ make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
     BOXXHE::_make_heap(first, last, comp);
 }
 
+/*!
+ * @brief 范围[first, last)区间制作大顶堆
+ * @tparam RandomAccessIterator 可随机访问的迭代器类型
+ * @param first 容器左闭区间
+ * @param last 容器右开区间
+ */
 template<class RandomAccessIterator>
 inline
 void
 make_heap(RandomAccessIterator first, RandomAccessIterator last)
 {
     // 没有传比较函数对象的话，默认使用<，也就是生成大顶堆
-    BOXXHE::_make_heap(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>>::value_type());
+    BOXXHE::_make_heap(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
 }
 
 END_NAMESPACE_BOXXHE

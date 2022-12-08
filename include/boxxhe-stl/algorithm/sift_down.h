@@ -6,19 +6,23 @@
 
 BEGIN_NAMESPACE_BOXXHE
 
-
+/*!
+ * @brief 在容器[frist, last)中从start位置开始调整使得满足堆的性质
+ * @tparam Compare 比较函数类型
+ * @tparam RandomAccessIterator 可访问的随机迭代器
+ * @param first 要调整的区间的迭代器first
+ * @param last 要调整的区间的迭代器second
+ * @param comp 比较函数
+ * @param len 区间长度
+ * @param start 从start迭代器指向的位置开始调整
+ */
 template<class Compare, class RandomAccessIterator>
-void sift_down(RandomAccessIterator first, // 要调整的区间的迭代器first
-               RandomAccessIterator, // last, 要调整的区间的迭代器second
-               Compare comp, // 比较函数
+void sift_down(RandomAccessIterator first, 
+               RandomAccessIterator, 
+               Compare comp,
                typename std::iterator_traits<RandomAccessIterator>::difference_type len, // [first, last)区间的长度
-               RandomAccessIterator start) // [first, last)区间中从start开始做sift_down操作
+               RandomAccessIterator start)
 {
-    /*
-    boxxhe对当前代码的评价（各项指标满分5星）：
-        可读性：2星
-        运行效率：4星 TODO 附上测试结果
-    */
     typedef typename std::iterator_traits<RandomAccessIterator>::difference_type difference_type;
     typedef typename std::iterator_traits<RandomAccessIterator>::value_type value_type;
     
