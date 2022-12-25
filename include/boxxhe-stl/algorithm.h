@@ -4,6 +4,16 @@
 #include "config.h"
 #include "iterator.h"
 
+/* Heap operations */
+#include "boxxhe-stl/algorithm/sift_down.h"
+#include "boxxhe-stl/algorithm/sift_up.h"
+#include "boxxhe-stl/algorithm/make_heap.h"
+#include "boxxhe-stl/algorithm/pop_heap.h"
+#include "boxxhe-stl/algorithm/push_heap.h"
+#include "boxxhe-stl/algorithm/sort_heap.h"
+
+
+
 BEGIN_NAMESPACE_BOXXHE
 
 
