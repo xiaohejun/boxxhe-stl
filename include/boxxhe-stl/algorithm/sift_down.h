@@ -1,5 +1,5 @@
-#ifndef SIFT_DOWM_H_
-#define SIFT_DOWM_H_
+#ifndef ALGORITHM_SIFT_DOWM_H_
+#define ALGORITHM_SIFT_DOWM_H_
 
 #include "boxxhe-stl/config.h"
 #include <iterator>

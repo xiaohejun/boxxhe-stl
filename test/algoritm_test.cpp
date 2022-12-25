@@ -1,7 +1,7 @@
 #include "boxxhe-stl/algorithm.h"
 #include <gtest/gtest.h>
 
-using namespace BOXXHE;
+using namespace boxxhe;
 
 TEST(adjacent_find_test, adjacent_find_in_arrary)
 {

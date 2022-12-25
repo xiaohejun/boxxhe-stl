@@ -2,7 +2,7 @@
 #include "boxxhe-stl/iterator.h"
 #include <gtest/gtest.h>
 
-using namespace BOXXHE;
+using namespace boxxhe;
 
 TEST(ostream_iterator_test, output_arrary)
 {

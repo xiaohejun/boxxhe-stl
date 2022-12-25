@@ -5,7 +5,7 @@ TEST(sift_down, shift_a_int_vector)
 {
     std::vector<int> case1 = {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
     // case1.begin() + 1也就是数字4开始做sift_down操作
-    BOXXHE::sift_down(case1.begin(), case1.end(),
+    boxxhe::sift_down(case1.begin(), case1.end(),
         std::less<int>(),
         case1.end() - case1.begin(),
         case1.begin() + 1);

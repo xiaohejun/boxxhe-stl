@@ -1,5 +1,5 @@
-#ifndef MAKE_HEAP_H_
-#define MAKE_HEAP_H_
+#ifndef ALGORITHM_MAKE_HEAP_H_
+#define ALGORITHM_MAKE_HEAP_H_
 
 #include "boxxhe-stl/config.h"
 #include "boxxhe-stl/algorithm/sift_down.h"
@@ -26,7 +26,7 @@ void _make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare c
     // 从最后一个非叶子节点开始调整，最后一个非叶子节点就是最后一个叶子节点的父亲 
     // start
     for (difference_type start = (n - 2) / 2; start >= 0; --start) {
-        BOXXHE::sift_down(first, last, comp, n, first + start);
+        boxxhe::sift_down(first, last, comp, n, first + start);
     }
 }
 
@@ -43,7 +43,7 @@ inline
 void
 make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
 {
-    BOXXHE::_make_heap(first, last, comp);
+    boxxhe::_make_heap(first, last, comp);
 }
 
 /*!
@@ -58,7 +58,7 @@ void
 make_heap(RandomAccessIterator first, RandomAccessIterator last)
 {
     // 没有传比较函数对象的话，默认使用<，也就是生成大顶堆
-    BOXXHE::_make_heap(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
+    boxxhe::_make_heap(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
 }
 
 END_NAMESPACE_BOXXHE
